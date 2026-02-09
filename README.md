@@ -1,4 +1,4 @@
-# De novo Peptide Design for Multimer Interface - Quick Start Guide
+# De novo Peptide Binder Design
 
 ## Overview
 This pipline is for *De Novo* design of peptides for a target. 
@@ -113,37 +113,38 @@ HOTSPOT_RES="A306,A429,C432" # Officially recommend 3-6 hotspots
 ```
 
 
-## Step 4: Run RFDiffusion
+### Run RFDiffusion
 
 ```bash
 source bash/run_rfdiffusion.sh
 ```
 
-## Step 5: Filter for Cyclization
+## Step 4: Filter for Cyclization (if design cyclic peptide)
 
 ```bash
-python filter_for_cyclization.py \
-  --input_dir rfdiffusion_designs \
-  --output_dir filtered_designs \
+python scripts/filter_cyclic.py \
+  --input_dir results/rfdiffusion_pdb \
+  --output_dir results/filtered_pdb \
   --max_distance 4 \
   --min_distance 2.5
 ```
 
-## Step 6: Design Sequences with ProteinMPNN
+## Step 5: Design Sequences with ProteinMPNN
 
 Edit `run_proteinmpnn.sh`:
 
 ```bash
-# For full tetramer
-FIXED_CHAINS="A,B,C,D"
 
-# Or for dimer subset
-FIXED_CHAINS="A,B"
+folder_with_pdbs="./results/rfdiffusion_pdb"
+output_dir="./results/proteinmpnn_sequences"
+
+# Chain to design (peptide)
+CHAIN_TO_DESIGN="B"
 ```
 
-Then run:
+### Run ProteinMPNN
 
 ```bash
-./run_proteinmpnn.sh
+./bash/run_proteinmpnn.sh
 ```
 

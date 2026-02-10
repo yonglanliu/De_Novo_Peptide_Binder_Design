@@ -46,6 +46,8 @@ conda env create -f env/proteinmpnn_fastrelax.yml
 conda activate proteinmpnn_binder_design
 ```
 
+--- 
+
 ### 3. AlphaFold2 Validation Environment
 
 This environment runs a modified AlphaFold2 model for validating the final peptide–protein complexes.

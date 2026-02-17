@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PDB_PATH="./data/pdb/clean/example_clean.pdb"
-CHAINS_IN_PDB="A B C D"   # space-separated
+CHAINS_IN_PDB="A B"   # space-separated
 INPUT_SEQ_DIR="./results/proteinmpnn_sequences/seqs"
 OUTPUT_SEQ_DIR="./results/AF_fasta"
 RUN_SCRIPT="./scripts/create_alphafold_multimer_fasta.py"

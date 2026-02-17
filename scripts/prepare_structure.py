@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Prepare PDB structure for RFDiffusion cyclic peptide design
+Prepare PDB structure for RFDiffusion peptide design
 - Remove ligands
 - Identify binding pocket residues
 - Clean structure

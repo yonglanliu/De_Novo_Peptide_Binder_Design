@@ -25,7 +25,7 @@ First, you need to know:
 python scripts/analyze_pocket.py \
   --pdb ./data/pdb/raw/example.pdb \
   --chains A B C D \
-  --ligands A:501 C:501 >& logs/analyze_pocket.out
+  --ligands ligand_chain_ID:ligand_residue_number >& logs/analyze_pocket.out
 ```
 
 This will tell you:
@@ -40,8 +40,8 @@ This will tell you:
 python scripts/prepare_structure.py \
   --input_pdb ./data/pdb/raw/example.pdb \
   --output_pdb ./data/pdb/clean/example_clean.pdb \
-  --ligands A:501 C:501 \
-  --keep_chains A B C D \
+  --ligands ligand_chain_ID:ligand_residue_number  \
+  --keep_chains A B \
   --distance_cutoff 3.2 >& logs/prepare_structure.out
 ```
 
@@ -56,7 +56,7 @@ python scripts/prepare_structure.py \
 # Get comprehensive pocket analysis
 python scripts/pocket_visual.py \
   --pdb ./data/pdb/raw/example.pdb \
-  --ligands A:501 C:501 \
+  --ligands ligand_chain_ID:ligand_residue_number \
   --output_report logs/pocket_report.txt \
   --output_pymol pymol_visual/visualize.pml
 
@@ -85,9 +85,9 @@ cd ./RFdiffusion
 # CONFIGURATION - EDIT THESE
 INPUT_PDB="./data/pdb/clean/example_clean.pdb "
 
-# 4-8: design a peptide containing 4-8 residues; A9-466/0: residue range 9-466 in chain A; C9-466/0: residue range 9-466 in chain C
-# It means, you want to keep chain A and C and design a peptide with a length range of 4-8
-CONTIG="4-8 A9-466/0 C9-466/0"
+# 4-8: design a peptide containing 10-20 residues; A20-500/0: residue range 20-500 in chain A; C20-500/0: residue range 20-500 in chain C
+# It means, you want to keep chain A and C and design a peptide with a length range of 20-20
+CONTIG="10-20 A20-500/0 C20-500/0"
 
 # Checkpoint .pt of RFdiffusion model
 CHECKPOINT_PT="./models/Complex_base_ckpt.pt"
@@ -105,11 +105,11 @@ RUN_INFER="./scripts/run_inference.py"
 NUM_DESIGNS=50
 
 # Output directory
-OUTPUT_DIR="../results/rfdiffusion_aa_4-8"
+OUTPUT_DIR="../results/rfdiffusion_aa_10-20"
 mkdir -p "${OUTPUT_DIR}"
 
 # Hotspot residues (optional)
-HOTSPOT_RES="A306,A429,C432" # Officially recommend 3-6 hotspots
+HOTSPOT_RES="A300,A489,B200" # Officially recommend 3-6 hotspots
 ```
 
 

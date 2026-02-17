@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Detailed analysis of multi-ligand binding pocket
+Detailed analysis of ligand binding pocket
 Creates visualization scripts and detailed geometry reports
 
 Created by: Yonglan Liu
@@ -14,7 +14,7 @@ from collections import defaultdict
 
 def analyze_detailed_pocket(pdb_file, ligand_specs, distance_cutoff=5.0):
     """
-    Comprehensive analysis of binding pocket with multiple ligands
+    Comprehensive analysis of binding pocket with ligands
     """
     parser = PDB.PDBParser(QUIET=True)
     structure = parser.get_structure('complex', pdb_file)

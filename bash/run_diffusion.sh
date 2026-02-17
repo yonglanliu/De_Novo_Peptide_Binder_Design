@@ -1,10 +1,4 @@
 #!/bin/bash
-#SBATCH --job-name=5F91_pep
-#SBATCH --cpus-per-task=8
-#SBATCH --time=100:00:00
-#SBATCH --mem=100g
-#SBATCH --gres=gpu:p100:1,lscratch:100
-#SBATCH -p gpu
 
 # RFDiffusion script for peptide binder design
 # Adjust parameters based on your specific target structure
@@ -22,10 +16,8 @@ cd ./RFdiffusion
 # Input PDB (cleaned, protein only)
 INPUT_PDB="../data/pdb/clean/example.pdb"
 
-# Contig map:
-#  - "8-15" = designed peptide length range
-#  - "A9-466/0" and "C9-466/0" = keep target chains (with chain breaks /0)
-CONTIG="4-8 A9-466/0 C9-466/0"
+# Contig map
+CONTIG="10-20 A20-500/0 B20-500/0"
 
 # Checkpoint .pt
 CHECKPOINT_PT="./models/Complex_base_ckpt.pt"
@@ -43,11 +35,11 @@ RUN_INFER="./scripts/run_inference.py"
 NUM_DESIGNS=50
 
 # Output directory
-OUTPUT_DIR="../results/rfdiffusion_aa_4-8"
+OUTPUT_DIR="../results/rfdiffusion_aa_10-20"
 mkdir -p "${OUTPUT_DIR}"
 
 # Hotspot residues (optional)
-HOTSPOT_RES="A306,A429,A432"
+HOTSPOT_RES="A300,A2300,B400"
 
 # =============================================================================
 # FIX: Writable schedules directory (avoids /opt/conda read-only error)

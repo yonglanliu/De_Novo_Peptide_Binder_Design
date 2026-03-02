@@ -22,42 +22,33 @@ pip install -e . # install the rfdiffusion module from the root of the repositor
 
 ---
 
-Thanks for **Nathaniel R. Bennett** and [his paper](https://www.nature.com/articles/s41467-023-38328-5) to for Improving de novo protein binder design with deep learning.
-To setup "proteinmpnn_binder_design" and "af2_binder_design", please use two file <code>./env/proteinmpnn_fastrelax.yml</code> and <code>af2_binder_design.yml</code>
-The environment file is adapted from the following repository: [dl_binder_design](https://github.com/nrbennet/dl_binder_design). 
+### 2. Peptide Design Environment
 
-Only **minor modifications** were made to simplify installation.
-
-### 2. ProteinMPNN + FastRelax Environment
-
-<code>proteinmpnn_binder_design</code>
 
 * This environment is used for:
 
 * ProteinMPNN sequence design
 
+* Sequence prioritization based on score
+
 * Rosetta / PyRosetta FastRelax
 
 * Interface scoring and refinement
 
+* Binder energy scoring and refinement
+
+* Alphafold2 binder conformation scoring
+
+* Alphafold-multimer interface scoring
 
 ```bash
-conda env create -f env/proteinmpnn_fastrelax.yml
+conda env create -f env/peptide_design.yml
 conda activate proteinmpnn_binder_design
 ```
 
 --- 
 
-### 3. AlphaFold2 Validation Environment
 
-This environment runs a modified AlphaFold2 model for validating the final peptide–protein complexes.
-
-<cdoe>proteinmpnn_binder_design</code>
-
-```bash
-conda env create -f env/af2_binder_design.yml
-conda activate af2_binder_design
-```
 
 ## Final Environment Summary
 
@@ -68,12 +59,11 @@ After setup, you should have **three conda environments**:
 * RFdiffusion
 * Backbone generation of peptide binders with hotspot constraints
 
-### proteinmpnn_binder_design
+### peptide_design
 
 * ProteinMPNN
 * PyRosetta / FastRelax
 * Sequence design and structural refinement
-
-### af2_binder_design
-* Modified AlphaFold2
+* Modified Alphafold2
 * Final structural validation of peptide–protein complexes
+
